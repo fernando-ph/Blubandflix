@@ -1,0 +1,378 @@
+type: collection.insomnia.rest/5.0
+name: bluebandflix
+meta:
+  id: wrk_5a2b51b7d4a04420a06bbe517105843b
+  created: 1759190098909
+  modified: 1759496894495
+  description: ""
+collection:
+  - url: http://localhost:8082/api/users/register
+    name: My first request
+    meta:
+      id: req_79b719224b924a86a5aa11668f737591
+      created: 1759190098989
+      modified: 1759498444952
+      isPrivate: false
+      description: ""
+      sortKey: -1759190098989
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username":"sandisjdrits",
+            "email": "sandjuujirt5igey1sd23@example.com",
+            "password": "1234iuistir4sd",
+            "fullName": "sase",
+            "gender": "as",
+            "phone": "123-456-7890",
+            "address": "123 Main St",
+            "image": "http://example.com/image.jpg"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8082/api/users/login
+    name: New Request
+    meta:
+      id: req_cb9e20f876224639a2dcb5b9735ed699
+      created: 1759206344384
+      modified: 1759235407125
+      isPrivate: false
+      description: ""
+      sortKey: -1759206344384
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username":"sandiss",
+            "password": "1234ss"
+           
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    authentication:
+      type: none
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8082/api/users/login
+    name: New Request
+    meta:
+      id: req_c03898a4d8b74a439d8117851cef25a6
+      created: 1759206412412
+      modified: 1759208033740
+      isPrivate: false
+      description: ""
+      sortKey: -1759206412412
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: ""
+    name: New Request
+    meta:
+      id: req_ac4bca70f0a74ef18c7fc21152eba8ed
+      created: 1759207976288
+      modified: 1759207976288
+      isPrivate: false
+      description: ""
+      sortKey: -1759207976288
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8082/api/users/3
+    name: New Request
+    meta:
+      id: req_73023e2445f342c492d7a6162f451ef7
+      created: 1759208145437
+      modified: 1759412846725
+      isPrivate: false
+      description: ""
+      sortKey: -1759208145437
+    method: GET
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW5kaXNzIiwiaWF0IjoxNzU5MjM1NDA4LCJleHAiOjE3NTk4NDAyMDh9.dHk7doC4Tb84Siq2SF_7jLLh61ybY64FzFu3cVmkDLRF0HhTnOf6OFz2RIwjQKpgkjG-l8RKeYWO15zT_SLxng
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8082/api/users/3
+    name: New Request
+    meta:
+      id: req_812293caad5b4276ae3024bbed2a88a5
+      created: 1759224851942
+      modified: 1759412872511
+      isPrivate: false
+      description: ""
+      sortKey: -1759224851942
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+         	"username":"sandiss",
+            "email": "sandi1s23@example.com",
+            "password": "1234ss"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    authentication:
+      type: bearer
+      token: '"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW5kaXNzIiwiaWF0IjoxNzU5MjM2OTQxLCJleHAiOjE3NTk4NDE3NDF9.ByWJCzsClcoYWQByrwzQaX95RbtokMneMJducKvELrmHrIgDGlt-4pfMlXINPROkVVDeU9pzx4Jn5EF8XRiD2g",'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:5000/api/v1/register
+    name: New Request
+    meta:
+      id: req_8907fd0972164c04b7fc24b79cd67966
+      created: 1759225378638
+      modified: 1759429540193
+      isPrivate: false
+      description: ""
+      sortKey: -1759225378638
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username":"sandisdas",
+            "email": "sandi1sd234@example.com",
+            "password": "1234ssds",
+            "fullName": "sase",
+            "gender": "as",
+            "phone": "123-456-7890",
+            "address": "123 Main St",
+            "image": "http://example.com/image.jpg"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:5000/api/v1/movie
+    name: New Request
+    meta:
+      id: req_4c85943558c341558e05e947aba09650
+      created: 1759426786081
+      modified: 1759496814885
+      isPrivate: false
+      description: ""
+      sortKey: -1759426786081
+    method: POST
+    parameters:
+      - id: pair_fc384c6334f3457aa8877a0cc821b650
+        name: title
+        value: gf
+        description: ""
+        disabled: false
+      - id: pair_1836ace30ec1448b8d25fbc3e9f58586
+        name: description
+        value: gf
+        description: ""
+        disabled: false
+      - id: pair_b476de0717f24ad7a0d6ce7e88c7c288
+        name: year
+        value: "2210"
+        description: ""
+        disabled: false
+      - id: pair_4501a350296144fc93d94ed1962a3035
+        name: poster
+        value: "{% file 'D:\\\\\\\\foto dan vidio\\\\\\\\Captures\\\\\\\\WhatsApp Image
+          2020-04-30 at 04.32.30(1).jpeg' %}"
+        description: ""
+        disabled: false
+        type: text
+        multiline: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_f231d0f84b3f487dbacd95c5f3b03991
+    authentication:
+      type: bearer
+      token: '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTk0MzgxNjIsImlkIjo0fQ.CAFXR1jIsLawl7KOWDI_vA1YHwbz4ZAp-_z2tXNrp-M"'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:5000/api/v1/login
+    name: New Request
+    meta:
+      id: req_3b980cd171114dec9b1181d06ae87301
+      created: 1759429584604
+      modified: 1759496767081
+      isPrivate: false
+      description: ""
+      sortKey: -1759429584604
+    method: POST
+    body:
+      mimeType: application/json
+      text: ""
+    parameters:
+      - id: pair_b37192b0515944a6820bfca742777dd4
+        name: " title"
+        value: The Matrix
+        description: ""
+        disabled: false
+      - id: pair_7c8b5bd2577c4cda9a2d8bcd193b2048
+        name: image
+        value: gfh
+        description: ""
+        disabled: false
+        type: text
+        multiline: false
+      - id: pair_9a10cf10588d469bbef67073fe590d75
+        name: year
+        value: "2012"
+        description: ""
+        disabled: false
+      - id: pair_d946ef96756d4506a846a86b37a491a4
+        name: category_id
+        value: o
+        description: ""
+        disabled: false
+      - id: pair_109c5f56fb08497289c8994ae8da99ad
+        name: description
+        value: yj
+        description: ""
+        disabled: false
+      - id: pair_532afcfab6314a9d9424cbe19d052b27
+        name: link
+        value: ghg
+        description: ""
+        disabled: false
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_95d0d7ab2f914691b0dec4c79ee05e9f
+      - name: User-Agent
+        value: insomnia/11.6.1
+        id: pair_7c879c9f6f6b41e69c31912af120d89c
+      - id: pair_d11b9bab55504d3aa8e2005a74c700cd
+        name: ""
+        value: ""
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: '"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTk0MzY3NjIsImlkIjo0fQ.zZeIFV_yHsWJcNPFUw1Ykx6XfSxcPOwOM1WDUegmPeQ"'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8082/api/movies
+    name: Register
+    meta:
+      id: req_bdd019bdfa514672826f2ddd777c667a
+      created: 1759467649752
+      modified: 1759496762248
+      isPrivate: false
+      description: ""
+      sortKey: -1759467649752
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "title": "Avengers",
+          "image": "avengers.jpg",
+          "year": "2012",
+          "category": { "id": 1 }, 
+          "description": "Superhero movie",
+          "link": "https://..."
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.6.1
+    authentication:
+      type: bearer
+      token: '"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW5kaXNzIiwiaWF0IjoxNzU5NDY3NTI2LCJleHAiOjE3NjAwNzIzMjZ9.rN51phLl5LIhKsmdw8FDHhEpacc1WmBhiJ6rdWzCsHxrqkSL9-kJdQzqRWGFxF00eDXx0Pzar-VFpm5BaMlZ1w",'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_8b9c75a808f43e2779ae95e245c10de09c6fa186
+    created: 1759190098915
+    modified: 1759190098915
+environments:
+  name: Base Environment
+  meta:
+    id: env_8b9c75a808f43e2779ae95e245c10de09c6fa186
+    created: 1759190098913
+    modified: 1759190098913
+    isPrivate: false
