@@ -1,32 +1,31 @@
-import { useContext } from "react";
 import { Navigate, Outlet} from "react-router-dom"
-import { UserContext } from "../Context/userContext";
+import useAuthStore from "../Store/authStore";
 
 
 export function PrivateRouteLogin() {
-    const [state] = useContext(UserContext)
+    const { isAuthenticated } = useAuthStore();
 
-    if (!state.isLogin) {
+    if (!isAuthenticated) {
         return <Navigate to="/auth" />
     }
     return <Outlet />
 }
 
 export function PrivateRouteUser() {
-    const [state] = useContext(UserContext)
+    const { user } = useAuthStore();
 
-    if (state.user.role === "admin") {
-        return <Navigate to="/admin" />
+    if (user?.roles !== "ROLE_USER") {
+        return <Navigate to="/" /> // Redirect to admin if not a user
     }
 
     return <Outlet />
 }
 
 export function PrivateRouteAdmin() {
-    const [state] = useContext(UserContext)
+    const { user } = useAuthStore();
 
-    if (state.user.role !== "admin") {
-        return <Navigate to= "/" />
+    if (user?.roles !== "ROLE_ADMIN") {
+        return <Navigate to= "/admin" /> // Redirect to home if not an admin
     }
     return <Outlet />
 

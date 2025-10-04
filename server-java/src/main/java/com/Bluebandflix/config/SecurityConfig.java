@@ -47,7 +47,7 @@ public class SecurityConfig implements WebMvcConfigurer { // Implement WebMvcCon
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(AbstractHttpConfigurer::disable)
-             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Remove this line
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
@@ -59,21 +59,10 @@ public class SecurityConfig implements WebMvcConfigurer { // Implement WebMvcCon
         return http.build();
     }
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000") // Allow your frontend origin
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*") // Allow all headers
-                .allowCredentials(true); // Allow credentials (e.g., cookies, authorization headers)
-    }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    // Remove the CorsConfigurationSource bean as it's now handled by addCorsMappings
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

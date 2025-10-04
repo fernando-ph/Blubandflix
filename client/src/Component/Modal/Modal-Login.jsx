@@ -33,10 +33,10 @@ export default function Login() {
             console.log("login success : ", response);
             const { accessToken, tokenType } = response.data; 
 
-            loginZustand(accessToken, tokenType);
+            loginZustand(accessToken, tokenType, null); // user is not returned from the new API
             setAuthToken(accessToken); 
 
-            navigate('/'); // Redirect to home page after successful login
+            navigate('/admin'); // Redirect to dashboard page
 
             const alert = (
                 <Alert variant="success" className="py-1">

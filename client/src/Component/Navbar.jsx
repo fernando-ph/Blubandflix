@@ -39,7 +39,7 @@ export default function TopNav(props) {
           <Navbar.Brand href="#home"><img src={Logo} alt="logo" /></Navbar.Brand>
           <Nav className="justify-content-end">
             {isAuthenticated ? (
-              <Button variant="light" style={{color:"red", marginRight:"20px"}} onClick={() => navigate("/dashboard")}>Dashboard</Button>
+              <Button variant="light" style={{color:"red", marginRight:"20px"}} onClick={() => navigate("/")}>Home</Button>
             ) : (
               <>
                 <Button variant="light" style={{color:"red", marginRight:"20px"}} onClick={handleShow}>Login</Button>

@@ -32,8 +32,8 @@ function App() {
       const response = await API.get("/check-auth")
       console.log("Check user success : ", response);
 
-      const { accessToken, tokenType, user } = response.data.data; // Assuming check-auth returns similar structure or user data
-      login(accessToken, tokenType, user); // Update Zustand store
+      const { accessToken, tokenType } = response.data.data; // Assuming check-auth returns similar structure or user data
+      login(accessToken, tokenType); // Update Zustand store
       setAuthToken(accessToken); // Ensure token is set for API instance
       setIsLoading(false);
     } catch (error) {

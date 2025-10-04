@@ -30,8 +30,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
                 String username = tokenProvider.getUsernameFromJWT(jwt);
+                String roles = tokenProvider.getRolesFromJWT(jwt);
 
                 UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+                // Reconstruct authorities based on roles from JWT if needed, or rely on CustomUserDetailsService
+                // For now, we'll rely on CustomUserDetailsService to provide authorities
                 UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 

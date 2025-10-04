@@ -1,16 +1,17 @@
 import { create } from 'zustand';
+import { jwtDecode } from 'jwt-decode';
 
 const useAuthStore = create((set) => ({
   isAuthenticated: false,
   accessToken: null,
   tokenType: null,
   user: null, // To store user data if needed
-  login: (accessToken, tokenType, user) => {
-    set({ isAuthenticated: true, accessToken, tokenType, user });
+  login: (accessToken, tokenType) => {
+    const decodedUser = jwtDecode(accessToken);
+    set({ isAuthenticated: true, accessToken, tokenType, user: decodedUser });
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('tokenType', tokenType);
-    // Optionally store user data in localStorage if it's not sensitive
-    // localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(decodedUser));
   },
   logout: () => {
     set({ isAuthenticated: false, accessToken: null, tokenType: null, user: null });
@@ -21,10 +22,16 @@ const useAuthStore = create((set) => ({
   initializeAuth: () => {
     const accessToken = localStorage.getItem('accessToken');
     const tokenType = localStorage.getItem('tokenType');
-    // const user = JSON.parse(localStorage.getItem('user'));
-    if (accessToken && tokenType) {
-      set({ isAuthenticated: true, accessToken, tokenType });
-      // set({ isAuthenticated: true, accessToken, tokenType, user });
+    const storedUser = localStorage.getItem('user');
+
+    if (accessToken && tokenType && storedUser) {
+      const decodedUser = JSON.parse(storedUser);
+      set({ isAuthenticated: true, accessToken, tokenType, user: decodedUser });
+    } else if (accessToken && tokenType) {
+      // If user data is not in localStorage but token is, decode it
+      const decodedUser = jwtDecode(accessToken);
+      set({ isAuthenticated: true, accessToken, tokenType, user: decodedUser });
+      localStorage.setItem('user', JSON.stringify(decodedUser));
     }
   },
 }));

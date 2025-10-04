@@ -4,16 +4,34 @@ import {Col,Row, Dropdown, DropdownButton} from "react-bootstrap"
 import {useQuery} from "react-query"
 import { API } from "../../Config/Api"
 import Moment from "moment"
+import useTransactionStore from "../../Store/transactionStore"
+import { useEffect } from "react"
 
 
 export default function Admin() {
+    const { transactions, updateTransactionStatus, setTransactions } = useTransactionStore();
 
-    let { data : transaction } = useQuery("transactionCache", async () => {
-        const response = await API.get("/transactions")
-        return response.data.data
-    })
+    const { data: fetchedTransactions, refetch } = useQuery("transactionCache", async () => {
+        const response = await API.get("/transactions");
+        return response.data;
+    });
 
-    console.log("data transaksi :", transaction)
+    useEffect(() => {
+        if (fetchedTransactions) {
+            setTransactions(fetchedTransactions);
+        }
+    }, [fetchedTransactions, setTransactions]);
+
+    const handleUpdateStatus = async (id, status) => {
+        try {
+            await updateTransactionStatus(id, status);
+            refetch(); // Refetch transactions after updating status
+        } catch (error) {
+            console.error("Failed to update transaction status:", error);
+        }
+    };
+
+    console.log("data transaksi :", transactions);
 
     return (
         <div>
@@ -32,22 +50,22 @@ export default function Admin() {
                             <hr />
                         </Row>
                     <div style={{backgroundColor:"#2b3467"}}>
-                        {transaction?.map((data,i) => ( 
-                        <Row>
+                        {transactions?.map((data,i) => ( 
+                        <Row key={data.id}>
                             <Col style={{color:"white"}}>{i + 1}</Col>
-                            <Col style={{color:"white"}}>{data?.user.fullname}</Col>
-                            <Col style={{color:"white"}}>{Moment(data?.due_date).format("YYYY-MM-DD")}</Col>
-                            <Col style={{color:"white"}}>Active</Col>
-                            <Col style={{color:"white"}}>{data?.status}</Col>
-                            <Col className="mb-3">
-                            <Dropdown>
-                                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                    Action
-                                </Dropdown.Toggle>
+            <Col style={{color:"white"}}>{data?.user?.fullName}</Col>
+            <Col style={{color:"white"}}>{Moment(data?.due_date).format("YYYY-MM-DD")}</Col>
+            <Col style={{color:"white"}}>Active</Col>
+            <Col style={{color:"white"}}>{data?.status}</Col>
+            <Col className="mb-3">
+            <Dropdown>
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    Action
+                </Dropdown.Toggle>
 
                                 <Dropdown.Menu style={{ backgroundColor: '#2B3467' }}>
-                                    <Dropdown.Item href="#/action-1" style={{color:"white"}}>Approve</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2" style={{color:"white"}}>Cancel</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => handleUpdateStatus(data.id, "approved")} style={{color:"white"}}>Approve</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => handleUpdateStatus(data.id, "cancelled")} style={{color:"white"}}>Cancel</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                             </Col>
