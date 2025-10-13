@@ -8,18 +8,7 @@ export default function Register() {
 
     const [message, setMessage] = useState(null)
     const { form, setForm, resetForm } = useRegisterStore();
-    const {username, email, password, fullname, gender, phone, address, image } = form
-
-    useEffect(() => {
-        // Set initial form values from the provided JSON data
-        setForm("username", "fernando");
-        setForm("email", "fernando1@gmail.com");
-        setForm("password", "789");
-        setForm("fullname", "nandol");
-        setForm("gender", "male");
-        setForm("phone", "123-456-7890");
-        setForm("address", "123 Main St");
-    }, []);
+    const {username, email, password, fullName, gender, phone, address,image } = form
 
     const handleChange = (e) => {
         setForm(e.target.name, e.target.value)
@@ -29,7 +18,7 @@ export default function Register() {
         try {
             e.preventDefault()
 
-            const response = await API.post('/register', form)
+            const response = await API.post('/users/register', form)
             console.log("register success", response)
 
             const alert = (
@@ -61,8 +50,8 @@ export default function Register() {
                     <FloatingLabel controlId="username"label="Username"className="mb-3">
                         <Form.Control type="text" placeholder='Username' name="username" value={username} onChange={handleChange}/>
                     </FloatingLabel>
-                    <FloatingLabel controlId="fullname"label="Fullname"className="mb-3">
-                        <Form.Control type="text" placeholder='Fullname' name="fullname" value={fullname} onChange={handleChange}/>
+                    <FloatingLabel controlId="fullName"label="FullName"className="mb-3">
+                        <Form.Control type="text" placeholder='FullName' name="fullName" value={fullName} onChange={handleChange}/>
                     </FloatingLabel>
                     <FloatingLabel controlId="email"label="Email"className="mb-3">
                         <Form.Control type="email" placeholder='Email' name="email" value={email} onChange={handleChange}/>
@@ -81,6 +70,15 @@ export default function Register() {
                     <FloatingLabel controlId="address"label="Address"className="mb-3">
                         <Form.Control type="text" placeholder='Address' name="address" value={address} onChange={handleChange} />
                     </FloatingLabel>
+                        <FloatingLabel controlId="image" label="Image" className="mb-3">
+                        <Form.Control
+                            type="text"
+                            placeholder="Image"
+                            name="image"
+                            onChange={handleChange}
+                        />
+                        </FloatingLabel>
+
          
                         <div className='containerRegisterButton'>
                             <button type="submit" className='loginButton'>Register</button>
